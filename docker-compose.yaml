@@ -1,14 +1,11 @@
-version: '3.8'
+version: '3.4'
 
 services:
-  load-balancer:
-    image: nginx:1.25.1
-    container_name: load-balancer
-    ports:
-      - protocol: tcp
-        target: 80
-        published: 8881
-    environment:
-      NGINX_PORT: 80
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    nginx:
+        image: nginx:latest
+        container_name: my-nginx
+        volumes:
+            - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+        ports:
+            - 8000:8000
+            - 443:443
